@@ -4,7 +4,7 @@ class TodoList extends React.Component {
     super(props)
     this.state = {
       title: this.props.title,
-      entries: this.props.todo_entries,
+      entries: this.props.entries,
       onKeyDownHandler: this.addEntry.bind(this)
     }
   }
