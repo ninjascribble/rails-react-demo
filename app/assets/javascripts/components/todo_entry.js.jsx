@@ -2,10 +2,10 @@ class TodoEntry extends React.Component {
 
   constructor (props) {
     super(props)
+    this.onDoneButtonClick = this.handleDoneButtonClick.bind(this)
     this.state = {
       name: this.props.name,
-      done: this.props.done,
-      onClickHandler: this.complete.bind(this)
+      done: this.props.done
     }
   }
 
@@ -20,12 +20,17 @@ class TodoEntry extends React.Component {
   render () {
     return (
       <li className={ this.getClassName() }>
-        <button type="button" className="close close-inline-left" aria-label="Done" onClick={this.state.onClickHandler}>
+        <button type="button" className="close close-inline-left" aria-label="Done"
+          onClick={this.onDoneButtonClick}>
           <span aria-hidden="true">&times;</span>
         </button>
         { this.state.name }
       </li>
     )
+  }
+
+  handleDoneButtonClick (evt) {
+    this.complete()
   }
 
   complete () {
