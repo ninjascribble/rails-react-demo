@@ -9,6 +9,19 @@
   </head>
 
   <body>
-    <%= yield %>
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <a class="navbar-brand" href="#">A Very Special React Demo</a>
+    </nav>
+
+    <div class="container-fluid">
+      <%= yield %>
+    </div>
+
+    <footer class="container-fluid">
+      <p class="text-center">
+        Built with &hearts; by
+        <a href="https://github.com/ninjascribble">ninjascribble</a>
+      </p>
+    </footer>
   </body>
 </html>
