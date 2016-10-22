@@ -5,6 +5,7 @@ class TodoList extends React.Component {
     this.entryField = null
     this.onEntryFieldKeydown = this.handleEntryFieldKeydown.bind(this)
     this.state = {
+      id: this.props.id,
       title: this.props.title,
       entries: this.props.entries,
       errors: []
@@ -42,7 +43,7 @@ class TodoList extends React.Component {
   renderEntries () {
     return (
       <ul className="list-unstyled">
-        { this.state.entries.map((entry) => <TodoEntry key={entry.name} name={entry.name} done={entry.done}/>) }
+        { this.state.entries.map((entry) => <TodoEntry key={entry.name} id={entry.id} name={entry.name} done={entry.done}/>) }
       </ul>
     )
   }
@@ -75,6 +76,14 @@ class TodoList extends React.Component {
   }
 
   addNewEntry (entry) {
+    var request = new XMLHttpRequest()
+    var params = Object.assign(entry, { todo_list_id: this.state.id })
+    var payload = JSON.stringify(params)
+
+    request.open("post", "http://localhost:3000/entries")
+    request.setRequestHeader("Content-Type", "application/json")
+    request.send(payload)
+
     this.setState({
       entries: this.state.entries.concat(entry),
       errors: []

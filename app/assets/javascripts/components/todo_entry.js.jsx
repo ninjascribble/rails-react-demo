@@ -4,6 +4,7 @@ class TodoEntry extends React.Component {
     super(props)
     this.onDoneButtonClick = this.handleDoneButtonClick.bind(this)
     this.state = {
+      id: this.props.id,
       name: this.props.name,
       done: this.props.done
     }
@@ -32,7 +33,17 @@ class TodoEntry extends React.Component {
   }
 
   complete () {
-    this.setState({ done: true })
+    var request = new XMLHttpRequest()
+    var params = Object.assign(this.state, { done: true })
+    var payload = JSON.stringify(params)
+
+    request.open("put", "http://localhost:3000/entries")
+    request.setRequestHeader("Content-Type", "application/json")
+    request.send(payload)
+
+    this.setState({
+      done: true
+    })
   }
 }
 

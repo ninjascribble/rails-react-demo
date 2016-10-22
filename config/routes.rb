@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  get 'homepage/index'
-
   root 'homepage#index'
+  post 'entries', to: 'todo_entries#create'
+  put 'entries', to: 'todo_entries#update'
 end
