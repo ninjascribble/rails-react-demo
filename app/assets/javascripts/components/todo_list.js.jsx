@@ -54,6 +54,7 @@ class TodoList extends React.Component {
     try {
       this.createNewEntry(this.entryField.value)
       this.resetEntryField()
+      this.resetErrorMessage()
     } catch (err) {
       this.addErrorMessage(err.message)
     }
@@ -85,8 +86,7 @@ class TodoList extends React.Component {
     request.send(payload)
     request.onload = () => {
       this.setState({
-        entries: this.state.entries.concat(JSON.parse(request.response)),
-        errors: []
+        entries: this.state.entries.concat(JSON.parse(request.response))
       })
     }
   }
@@ -99,6 +99,12 @@ class TodoList extends React.Component {
 
   resetEntryField () {
     this.entryField.value = ''
+  }
+
+  resetErrorMessage () {
+    this.setState({
+      errors: []
+    })
   }
 }
 
