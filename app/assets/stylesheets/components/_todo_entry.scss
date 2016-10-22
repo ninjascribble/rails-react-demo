@@ -1,0 +1,17 @@
+.todo_entry {
+
+  .close {
+    display: inline;
+    float: none;
+    margin-right: 10px;
+  }
+}
+
+.todo_entry--done {
+  color: $text-muted;
+  text-decoration: line-through;
+
+  .close {
+    visibility: hidden;
+  }
+}

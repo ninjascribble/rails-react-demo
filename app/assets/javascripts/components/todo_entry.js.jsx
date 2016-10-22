@@ -20,10 +20,8 @@ class TodoEntry extends React.Component {
   render () {
     return (
       <li className={ this.getClassName() }>
-        <button type="button" className="close close-inline-left" aria-label="Done"
-          onClick={this.onDoneButtonClick}>
-          <span aria-hidden="true">&times;</span>
-        </button>
+        <button type="button" className="close close-inline-left"
+          onClick={ this.onDoneButtonClick }>&times;</button>
         { this.state.name }
       </li>
     )
