@@ -83,11 +83,12 @@ class TodoList extends React.Component {
     request.open("post", "http://localhost:3000/entries")
     request.setRequestHeader("Content-Type", "application/json")
     request.send(payload)
-
-    this.setState({
-      entries: this.state.entries.concat(entry),
-      errors: []
-    })
+    request.onload = () => {
+      this.setState({
+        entries: this.state.entries.concat(JSON.parse(request.response)),
+        errors: []
+      })
+    }
   }
 
   addErrorMessage (message) {
