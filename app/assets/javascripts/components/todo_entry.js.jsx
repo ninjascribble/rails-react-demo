@@ -18,12 +18,25 @@ class TodoEntry extends React.Component {
     return className
   }
 
+  getIcon () {
+    if (this.state.done == true) {
+      return '☑'
+    } else {
+      return '☐'
+    }
+  }
+
   render () {
     return (
       <li className={ this.getClassName() }>
-        <button type="button" className="close close-inline-left"
-          onClick={ this.onDoneButtonClick }>&times;</button>
-        { this.state.name }
+        <button type="button" className="todo_entry__done_btn"
+          onClick={ this.onDoneButtonClick }
+          disabled={ this.state.done }>
+          { this.getIcon() }
+        </button>
+        <span className="todo_entry__name">
+          { this.state.name }
+        </span>
       </li>
     )
   }

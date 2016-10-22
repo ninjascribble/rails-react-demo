@@ -1,17 +1,25 @@
 .todo_entry {
 
-  .close {
+  .todo_entry__done_btn {
+    background: transparent;
+    border: 0;
+    cursor: pointer;
     display: inline;
-    float: none;
-    margin-right: 10px;
+    font-size: ($font-size-base * 1.4);
+    font-weight: $close-font-weight;
+    line-height: 1;
+    margin-right: 6px;
+    padding: 0;
+    position: relative;
+    top: 1px;
+    -webkit-appearance: none;
   }
 }
 
 .todo_entry--done {
   color: $text-muted;
-  text-decoration: line-through;
 
-  .close {
-    visibility: hidden;
+  .todo_entry__name {
+    text-decoration: line-through;
   }
 }
