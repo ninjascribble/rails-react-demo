@@ -1,1 +1,6 @@
-Hello!
+<h2><%= @todo_list.title %></h2>
+<ul>
+<% @todo_list.entries.each do |entry| %>
+<li><%= entry.name %></li>
+<% end %>
+</ul>
